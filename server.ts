@@ -346,7 +346,7 @@ Provide a detailed response following this exact JSON schema:
 The sum of breakdown percentages must be exactly 100. Let the predicted emotions reflect how those individual deep learning models would process the semantic context (BERT) versus local patterns (BiLSTM), with the ensemble fusing them. Make sure to generate highly practical, domain-specific academic guidance.`;
 
     const response = await client.models.generateContent({
-      model: "gemini-3.5-flash",
+     model: "gemini-2.5-flash",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
