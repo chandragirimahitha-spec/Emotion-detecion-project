@@ -1,0 +1,6 @@
+{
+  "name": "AI Emotion-Driven Learning Support Platform",
+  "description": "An end-to-end support system that classifies learner emotions (Bored, Confident, Confused, Curious, Frustrated) via BiLSTM and BERT models and generates personalized, empathetic academic guidance using Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
