@@ -41,9 +41,20 @@ export default function Dashboard() {
   const fetchAnalytics = async () => {
     setLoading(true);
     try {
-     const res = await fetch(
-  "https://emotion-detecion-project.onrender.com/api/analytics"
+   const res = await fetch(
+  "https://emotion-detecion-project.onrender.com/api/analyze",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      text: inputText,
+    }),
+  }
 );
+
+const data = await res.json();
       if (!res.ok) throw new Error("Failed to load analytics");
       const json = await res.json();
       setData(json);
