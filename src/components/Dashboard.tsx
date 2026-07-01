@@ -41,18 +41,7 @@ export default function Dashboard() {
   const fetchAnalytics = async () => {
     setLoading(true);
  try {
-  const res = await fetch(
-    "https://emotion-detecion-project.onrender.com/api/analyze",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        text: inputText,
-      }),
-    }
-  );
+const res = await fetch("https://emotion-detecion-project.onrender.com/api/analyze");
 
   if (!res.ok) {
     const errorText = await res.text();
