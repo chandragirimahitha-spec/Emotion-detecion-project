@@ -40,31 +40,31 @@ export default function Dashboard() {
 
   const fetchAnalytics = async () => {
     setLoading(true);
-    try {
-   const res = await fetch(
-  "https://emotion-detecion-project.onrender.com/api/analyze",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      text: inputText,
-    }),
-  }
-);
-
-const data = await res.json();
-      if (!res.ok) throw new Error("Failed to load analytics");
-      const json = await res.json();
-      setData(json);
-      setError(null);
-    } catch (err: any) {
-      setError(err.message || "Something went wrong while fetching analytics.");
-    } finally {
-      setLoading(false);
+ try {
+  const res = await fetch(
+    "https://emotion-detecion-project.onrender.com/api/analyze",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: inputText,
+      }),
     }
-  };
+  );
+
+  if (!res.ok) {
+    const errorText = await res.text();
+    console.error("Server Error:", errorText);
+    throw new Error(`HTTP ${res.status}`);
+  }
+
+  const data = await res.json();
+  console.log(data);
+} catch (err) {
+  console.error(err);
+}
 
   useEffect(() => {
     fetchAnalytics();
